@@ -1,0 +1,17 @@
+<!-- Jinja extends code -->
+{% extends "base.html" %}
+
+<!-- Jinja block -->
+{% block content %}
+<h1>Add a New Cast Member</h1>
+<form action="/add_cast" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="date_of_birth">Date of Birth:</label>
+  <input type="date" id="date_of_birth" name="date_of_birth" required><br>
+
+  <button type="submit">Add Cast Member</button>
+</form>
+<!-- End Jinja -->
+{% endblock %}

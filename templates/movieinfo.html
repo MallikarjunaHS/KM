@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{movie["title"]}}</h1>
+<small>{{movie["year"]}} - {{movie["genre"]}}</small>
+<h2>Cast</h2>
+<p><strong>Director:</strong>{{movie["director"]}}</p>
+<ul>
+  <!-- Cast informtation for loop jinja -->
+
+  <!-- <li>Actor Name - Actior Role</li> -->
+</ul>
+<h2>Reviews</h2>
+<a href="/movies/{{movie._id}}/add_review"><button>Add Review</button></a>
+<ul>
+  <!-- Review information for loop jinja -->
+   {% for review in movie['reviews'] %}
+  <li>
+    <p><strong>{{review['user']}}</strong></p>
+    <p>{{'⭐️'*review['rating']}}</p>
+    <p>{{review['comment']}}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,47 @@
+
+     <!-- Jinja Extends code -->
+         <h1>Add a New Movie</h1>
+         <form action="/add_movie" method="post">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required><br>
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required><br>
+
+      <label for="genre">Genre:</label>
+      <input type="text" id="genre" name="genre" required><br>
+
+      <label for="director">Director:</label>
+      <input type="text" id="director" name="director"><br>
+
+      <label for="cast">Cast:</label>
+      <div id="cast-members">
+        <div>
+          <select name="cast_member">
+            {% for cast in cast_members %}
+              <option value="{{ cast._id }}">{{ cast.name }}</option>
+            {% endfor %}
+          </select>
+          <input type="text" name="role" placeholder="Role">
+        </div>
+      </div>
+      <button type="button" onclick="addCastMember()">Add Another Cast Member</button><br>
+
+      <button type="submit">Add Movie</button>
+    </form>
+    <script>
+      function addCastMember() {
+        var castDiv = document.getElementById('cast-members');
+        var newCast = document.createElement('div');
+        newCast.innerHTML = `
+          <select name="cast_member">
+            {% for cast in cast_members %}
+              <option value="{{ cast._id }}">{{ cast.name }}</option>
+            {% endfor %}
+          </select>
+          <input type="text" name="role" placeholder="Role">
+        `;
+        castDiv.appendChild(newCast);
+      }
+    </script>
+    <!-- Jinja extends end -->

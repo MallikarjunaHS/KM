@@ -1,0 +1,25 @@
+<!-- Jinja Extends -->
+{% extends "base.html" %}
+
+<!-- Jinja block -->
+{%block content %}
+<h1>Movies</h1>
+<p>Here are a list of all the movies in the database</p>
+
+<div class="col">
+    <a href="/add_movie"><button>Add Movie</button></a>
+  <!-- Jinja Loop -->
+   {% for movie in movies %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{movie["title"]}}</h5>
+    <p class="card-text">{{movie["genre"]}} - {{movie["year"]}}</p>
+      <a href="/movies/{{movie['_id']}}" class="btn btn-primary" style="width: 100%;">View More</a>
+    </div>
+  </div>
+  <!-- Jinja Loop end -->
+   {% endfor %}
+</div>
+
+<!-- Jinja Block end -->
+{% endblock %}

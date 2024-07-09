@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+<!-- Jinja block -->
+{%block content %}
+<h1>Casts</h1>
+<p>Here are a list of all the casts in the database</p>
+
+<div class="col">
+    <a href="/add_cast"><button>Add Cast</button></a>
+  <!-- Jinja Loop -->
+   {% for cast in casts %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{cast["name"]}}</h5>
+    <p class="card-text">{{cast["date_of_birth"]}}</p>
+     
+    </div>
+  </div>
+  <!-- Jinja Loop end -->
+   {% endfor %}
+</div>
+
+<!-- Jinja Block end -->
+{% endblock %}
